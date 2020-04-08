@@ -1,12 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input } from 'reactstrap';
 import Logo from './../Assets/logo.svg';
 import LoginIllustration from './../Assets/loginIllustration.svg';
 
-
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const Login = () => {
+  let [email, setEmail] = useState("");
+  let [password, setPassword] = useState("");
+
+
+  // 
+  let history = useHistory()
+
+  const loginUser = () => {
+    if (email && password) {
+      localStorage.setItem("email", email);
+      localStorage.setItem("password", password);
+
+      history.push("/dashboard");
+
+    } else {
+      alert("Please fill in all the details");
+    }
+  }
+
+
   return (
     <Container className="py-5">
       <Row className="py-4">
@@ -24,17 +43,17 @@ const Login = () => {
           <Form className="mt-5">
             <FormGroup>
               <Label className="grayColor mb-1" for="exampleEmail">Email</Label>
-              <Input className="inputBg border-0 rounded-sm" type="email" name="email" id="exampleEmail" placeholder="johnmartin@email.com" />
+              <Input onChange={(e) => setEmail(e.target.value)} className="inputBg border-0 rounded-sm" type="email" name="email" id="exampleEmail" placeholder="johnmartin@email.com" />
             </FormGroup>
 
             <FormGroup className="mt-5">
               <Label className="grayColor mb-1" for="examplePassword">Password</Label>
-              <Input className="inputBg border-0 rounded-sm" type="password" name="password" id="examplePassword" placeholder="**********" />
+              <Input onChange={(e) => setPassword(e.target.value)} className="inputBg border-0 rounded-sm" type="password" name="password" id="examplePassword" placeholder="**********" />
             </FormGroup>
 
             <div className="mt-4">&nbsp;</div>
 
-            <button className="btn btn-danger btn-block btn-lg rounded-sm mb-2">
+            <button onClick={loginUser} className="btn btn-danger btn-block btn-lg rounded-sm mb-2">
               <span style={{ fontSize: "16px" }}>Login</span>
             </button>
 

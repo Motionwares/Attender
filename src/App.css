@@ -17,3 +17,11 @@ body {
 .form-control {
   height: 50px;
 }
+
+.border-dashed {
+  border: 1px dashed rgba(160, 174, 192, 0.4);
+}
+
+.font18 {
+  font-size: 18px;
+}
