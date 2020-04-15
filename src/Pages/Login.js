@@ -18,6 +18,16 @@ const Login = () => {
       localStorage.setItem("email", email);
       localStorage.setItem("password", password);
 
+      const User = [
+        {
+          userName: "Bolu Abiola",
+          userEmail: "a@email.com",
+          userGender: "Male",
+          userContent: "This is just sample content"
+        }
+      ]
+
+      localStorage.setItem("allUsers", JSON.stringify(User));
       history.push("/dashboard");
 
     } else {

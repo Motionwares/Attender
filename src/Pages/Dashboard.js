@@ -7,8 +7,8 @@ import NavbarAvatar from './../Assets/navbarAvatar.svg';
 // Libraries
 import { useHistory } from 'react-router-dom';
 import { FiPlus } from "react-icons/fi";
-import { Container, Navbar, Nav, NavbarToggler, NavbarBrand, Collapse, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Row, Col, Card, CardBody, Modal, ModalHeader, ModalBody, ModalFooter, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-
+import { Container, Navbar, Nav, NavbarToggler, NavbarBrand, Collapse, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Row, Col, Card, CardBody, Modal, ModalHeader, ModalBody, ModalFooter, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { NavLink } from 'react-router-dom';
 // Components
 import CustomCard from './../Components/Card';
 
@@ -37,9 +37,7 @@ const Dashboard = () => {
 
     const newAllUsers = JSON.parse(localStorage.getItem("allUsers"));
     newAllUsers.push(User);
-
     localStorage.setItem("allUsers", JSON.stringify(newAllUsers));
-
   }
 
 
@@ -73,22 +71,21 @@ const Dashboard = () => {
             <img src={NavbarLogo} className="img-fluid" />
           </NavbarBrand>
 
-          <NavbarToggler onClick={toggle} />
+          {/* <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
 
             <Nav className="m-auto" navbar>
-              {/* Home */}
+              
               <NavItem>
-                <NavLink href="/components/">Home</NavLink>
+                <NavLink style={{ textDecoration: "none" }} activeClassName="activeClass" className="text-dark" to="/dashboard">Home</NavLink>
               </NavItem>
 
-              {/* Profile */}
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">Profile</NavLink>
+                <NavLink style={{ textDecoration: "none" }} activeClassName="activeClass" className="text-dark ml-md-3" to="/d">Profile</NavLink>
               </NavItem>
 
             </Nav>
-          </Collapse>
+          </Collapse> */}
 
           <UncontrolledDropdown >
             <DropdownToggle tag="div" caret>
@@ -138,7 +135,10 @@ const Dashboard = () => {
 
               <div className="mt-4">&nbsp;</div>
 
-              <button onClick={createUser} className="btn btn-danger btn-block btn-lg rounded-sm mb-2">
+              <button onClick={() => {
+                createUser();
+                toggleM();
+              }} className="btn btn-danger btn-block btn-lg rounded-sm mb-2">
                 <span style={{ fontSize: "16px" }}>Create</span>
               </button>
 
@@ -177,10 +177,7 @@ const Dashboard = () => {
                 );
               })}
             </>
-            :
-            <div className="d-flex justify-content-center align-items-center" style={{ height: "80vh" }}>
-              <p>No customers yet</p>
-            </div>}
+            : null}
 
 
         </Row>

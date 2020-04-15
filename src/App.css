@@ -25,3 +25,8 @@ body {
 .font18 {
   font-size: 18px;
 }
+
+.activeClass {
+  color: tomato !important;
+  font-weight: 600;
+}
