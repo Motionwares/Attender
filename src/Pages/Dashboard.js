@@ -167,13 +167,21 @@ const Dashboard = () => {
             </Card>
           </Col>
 
-          {AllUsers.map(user => {
-            return (
-              <Col key={user.userName} md="4">
-                <CustomCard gender={user.userGender} name={user.userName} email={user.userEmail} />
-              </Col>
-            );
-          })}
+          {AllUsers ?
+            <>
+              {AllUsers.map(user => {
+                return (
+                  <Col key={user.userName} md="4">
+                    <CustomCard gender={user.userGender} name={user.userName} email={user.userEmail} />
+                  </Col>
+                );
+              })}
+            </>
+            :
+            <div className="d-flex justify-content-center align-items-center" style={{ height: "80vh" }}>
+              <p>No customers yet</p>
+            </div>}
+
 
         </Row>
 
