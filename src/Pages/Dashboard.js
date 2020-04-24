@@ -7,16 +7,14 @@ import NavbarAvatar from './../Assets/navbarAvatar.svg';
 // Libraries
 import { useHistory } from 'react-router-dom';
 import { FiPlus } from "react-icons/fi";
-import { Container, Navbar, Nav, NavbarToggler, NavbarBrand, Collapse, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Row, Col, Card, CardBody, Modal, ModalHeader, ModalBody, ModalFooter, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+
+import { Container, Row, Col, Card, CardBody, Modal, ModalHeader, ModalBody, ModalFooter, Button, FormGroup, Label, Input } from 'reactstrap';
+
 // Components
 import CustomCard from './../Components/Card';
+import Navbar from './../Components/Navbar'
 
 const Dashboard = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen(!isOpen);
-
-
   // ==============================================
   const [Name, setName] = useState("");
   const [Email, setEmail] = useState("");
@@ -24,6 +22,8 @@ const Dashboard = () => {
   const [Gender, setGender] = useState("");
   // ================================================
 
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => setIsOpen(!isOpen);
 
   // ==================================================
 
@@ -65,42 +65,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <Navbar color="white" className="border-bottom" light expand="md">
-        <Container>
-          <NavbarBrand href="/">
-            <img src={NavbarLogo} className="img-fluid" />
-          </NavbarBrand>
-
-          {/* <NavbarToggler onClick={toggle} />
-          <Collapse isOpen={isOpen} navbar>
-
-            <Nav className="m-auto" navbar>
-              
-              <NavItem>
-                <NavLink style={{ textDecoration: "none" }} activeClassName="activeClass" className="text-dark" to="/dashboard">Home</NavLink>
-              </NavItem>
-
-              <NavItem>
-                <NavLink style={{ textDecoration: "none" }} activeClassName="activeClass" className="text-dark ml-md-3" to="/d">Profile</NavLink>
-              </NavItem>
-
-            </Nav>
-          </Collapse> */}
-
-          <UncontrolledDropdown >
-            <DropdownToggle tag="div" caret>
-              <img src={NavbarAvatar} className="img-fluid" />
-            </DropdownToggle>
-            <DropdownMenu>
-              <DropdownItem onClick={logout}>Logout</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem>Profile</DropdownItem>
-            </DropdownMenu>
-          </UncontrolledDropdown>
-
-        </Container>
-      </Navbar>
-
+      <Navbar />
       <Container className="my-3">
 
         {/* Modal */}
